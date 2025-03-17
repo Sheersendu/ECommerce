@@ -17,7 +17,7 @@ public class ProductRepository : IProductRepository
 
 		return new Product();
 	}
-	public void AddProduct(Product product)
+	public async Task<Product> AddProduct(ProductInputDTO product)
 	{
 		Guid productId = Guid.NewGuid();
 		Product newProduct = new()
@@ -29,5 +29,6 @@ public class ProductRepository : IProductRepository
 			CreatedTimeStamp = DateTime.Now
 		};
 		products.Add(productId, newProduct);
+		return newProduct;
 	}
 }

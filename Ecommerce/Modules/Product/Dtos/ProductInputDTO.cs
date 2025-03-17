@@ -1,6 +1,6 @@
 ﻿namespace Ecommerce.Modules.Product;
 
-public class Product : BaseDTO
+public class ProductInputDTO
 {
 	public string Name { get; set; }
 	public string Description { get; set; }

@@ -6,8 +6,8 @@ public class ProductService(IProductRepository productRepository) : IProductServ
 	{
 		return await productRepository.GetProduct(productId);
 	}
-	public void AddProduct(Product product)
+	public async Task<Product> AddProduct(ProductInputDTO product)
 	{
-		productRepository.AddProduct(product);
+		return await productRepository.AddProduct(product);
 	}
 }

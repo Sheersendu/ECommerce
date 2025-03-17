@@ -19,8 +19,8 @@ public class ProductController
 	}
 
 	[HttpPost]
-	public async void AddProduct(Product product)
+	public async Task<Product> AddProduct(ProductInputDTO product)
 	{
-		_productService.AddProduct(product);
+		return await _productService.AddProduct(product);
 	}
 }

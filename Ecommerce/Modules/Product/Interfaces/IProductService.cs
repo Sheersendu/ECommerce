@@ -3,5 +3,5 @@
 public interface IProductService
 {
 	public Task<Product> GetProduct(Guid productId);
-	public void AddProduct(Product product);
+	public Task<Product> AddProduct(ProductInputDTO product);
 }
