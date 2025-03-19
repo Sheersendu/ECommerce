@@ -3,9 +3,9 @@
 ### Product
 - GUID id(PK) 
 - GUID productId
-- varchar(50) name
+- varchar(100) name
 - varchar(200) description
-- varchar(10) price
+- decimal(10,4) price
 - GUID categoryID(FK)
 - int quantity
 
