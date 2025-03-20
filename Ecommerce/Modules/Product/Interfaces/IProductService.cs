@@ -2,6 +2,6 @@
 
 public interface IProductService
 {
-	public Task<Product> GetProduct(Guid productId);
-	public Task<Product> AddProduct(ProductInputDTO product);
+	public Task<Domain.Entities.Product> GetProduct(Guid productId);
+	public Task<Domain.Entities.Product> AddProduct(ProductInputDTO product);
 }

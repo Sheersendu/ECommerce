@@ -4,7 +4,7 @@ namespace Ecommerce.Modules.Product;
 
 [ApiController]
 [Route("products")]
-public class ProductController
+public class ProductController : ControllerBase
 {
 	private readonly IProductService _productService;
 	public ProductController(IProductService productService)
@@ -13,13 +13,13 @@ public class ProductController
 	}
 	
 	[HttpGet("{productId}")]
-	public async Task<Product> GetProduct([FromRoute]Guid productId)
+	public async Task<Domain.Entities.Product> GetProduct([FromRoute]Guid productId)
 	{
 		return await _productService.GetProduct(productId);
 	}
 
 	[HttpPost]
-	public async Task<Product> AddProduct(ProductInputDTO product)
+	public async Task<Domain.Entities.Product> AddProduct(ProductInputDTO product)
 	{
 		return await _productService.AddProduct(product);
 	}
