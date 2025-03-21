@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Modules.Product;
 
@@ -32,5 +33,25 @@ public class ProductRepository : IProductRepository
 		_context.Products.Add(newProduct);
 		await _context.SaveChangesAsync();
 		return newProduct;
+	}
+	
+	public async Task<Domain.Entities.Product> UpdateProduct(Guid productId, ProductInputDTO product)
+	{
+		var existingProduct = await _context.Products.FindAsync(productId);
+		if (existingProduct == null)
+		{
+			return new Domain.Entities.Product();
+		}
+		
+		existingProduct.Name = product.Name;
+		existingProduct.Description = product.Description;
+		existingProduct.Price = product.Price;
+		existingProduct.CategoryId = product.CategoryId;
+		existingProduct.Quantity = product.Quantity;
+		existingProduct.CreatedTimeStamp = DateTime.UtcNow;
+
+		_context.Products.Update(existingProduct);
+		await _context.SaveChangesAsync();
+		return existingProduct;
 	}
 }

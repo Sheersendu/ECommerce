@@ -23,4 +23,10 @@ public class ProductController : ControllerBase
 	{
 		return await _productService.AddProduct(product);
 	}
+	
+	[HttpPost("update/{productId}")]
+	public async Task<Domain.Entities.Product> UpdateProduct([FromRoute]Guid productId, ProductInputDTO product)
+	{
+		return await _productService.UpdateProduct(productId, product);
+	}
 }
